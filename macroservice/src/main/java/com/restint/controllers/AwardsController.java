@@ -46,6 +46,13 @@ public class AwardsController {
     	return awardDao.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    @ApiMethod(description = "update a award and save it to the database")
+    public List<Award> update(@RequestBody Award award){
+    	
+    	awardDao.save(award);
+    	return awardDao.findAll();
+    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ApiMethod(description = "Remove the award with the provided ID from the database")

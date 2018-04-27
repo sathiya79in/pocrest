@@ -46,6 +46,14 @@ import com.restint.model.Employee;
 	        return employeeDao.findAll();
 	    }
 
+	   
+	    @RequestMapping(method = RequestMethod.PUT)
+	    @ApiMethod(description = "update a employee and save it to the database")
+	    public List<Employee> update(@RequestBody Employee employee){
+	    	employeeDao.save(employee);
+
+	        return employeeDao.findAll();
+	    }
 	    
 	    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	    @ApiMethod(description = "Remove the employee with the provided ID from the database")

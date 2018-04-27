@@ -46,6 +46,14 @@ public class CompanyController {
     	return companyDao.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    @ApiMethod(description = "update a company and save it to the database")
+    public List<Company> update(@RequestBody Company company){
+    	
+    	companyDao.save(company);
+    	return companyDao.findAll();
+    }
+
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ApiMethod(description = "Remove the company with the provided ID from the database")

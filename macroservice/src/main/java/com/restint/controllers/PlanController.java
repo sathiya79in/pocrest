@@ -38,7 +38,7 @@ public class PlanController {
     }
 
  
-    @RequestMapping(value = "/create-plan", method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
     @ApiMethod(description = "Create a plan and save it to the database")
     public List<Plan> create(@RequestBody Plan plan){
     	
@@ -46,6 +46,13 @@ public class PlanController {
     	return planDao.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    @ApiMethod(description = "update a plan and save it to the database")
+    public List<Plan> update(@RequestBody Plan plan){
+    	
+    	planDao.save(plan);
+    	return planDao.findAll();
+    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ApiMethod(description = "Remove the plan with the provided ID from the database")
